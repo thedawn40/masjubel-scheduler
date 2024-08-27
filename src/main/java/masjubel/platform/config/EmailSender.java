@@ -13,7 +13,7 @@ import java.util.Properties;
 
 public class EmailSender {
 
-    public static void main(String[] args) {
+    public static void sendEmail(String filename){
         // Email configuration settings
         final String username = "no-reply@masjubel.com";
         final String password = "Luthf!92"; // Replace with your actual password
@@ -49,7 +49,7 @@ public class EmailSender {
 
             // Part two is the attachment from resource/generated
             messageBodyPart = new MimeBodyPart();
-            String filename = "new-20240810.png"; // Replace with the actual file name
+            // String filename = "new-20240810.png"; // Replace with the actual file name
             String filePath = EmailSender.class.getClassLoader().getResource("generated/" + filename).getPath();
             filePath = filePath.replace("%20", " "); // Decode any spaces in the path
             File file = new File(filePath);
@@ -69,5 +69,9 @@ public class EmailSender {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        
     }
 }

@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
@@ -57,6 +58,12 @@ public class GoldGenerateImagePrice {
 	        rendered_image = (BufferedImage)printManager.printToImage(print, 0, 1);	
 	        ImageIO.write(rendered_image, "png", ouputStream);  
 
+			TimeUnit.SECONDS.sleep(5);
+
+			System.out.println(generateFilename(date));
+
+			EmailSender.sendEmail(generateFilename(date)+".png");
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -69,10 +76,15 @@ public class GoldGenerateImagePrice {
     }
 
 	public String getResourceSavePath(Date date) {
-        String resourcePath = Paths.get("src/main/resources/generated/new-"+sdf.format(date)+".png").toAbsolutePath().toString();
+        String resourcePath = Paths.get("src/main/resources/generated/"+generateFilename(date)+".png").toAbsolutePath().toString();
         System.out.println("Resource path: " + resourcePath);
 		return resourcePath;
     }
+
+	public String generateFilename(Date date){
+		String result = "new-"+sdf.format(date);;
+		return result;
+	}
 
 	public static void main(String[] args) {
 		GoldGenerateImagePrice imagePrice = new GoldGenerateImagePrice();

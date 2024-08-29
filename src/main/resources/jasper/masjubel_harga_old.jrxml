@@ -16,55 +16,40 @@
 		<band height="500">
 			<image>
 				<reportElement x="0" y="0" width="500" height="500" uuid="091db0eb-fff7-46bb-bc58-250437830543"/>
-				<imageExpression><![CDATA["https://masjubel.com/assets/img/price-template.png"]]></imageExpression>
+				<imageExpression><![CDATA["C:/Users/luthfi alfarisi/Pictures/WhatsApp Image 2022-09-05 at 09.57.03.jpeg"]]></imageExpression>
 			</image>
 			<textField isBlankWhenNull="true">
 				<reportElement x="34" y="133" width="210" height="17" forecolor="#FFFFFF" uuid="27ca5990-8c16-42fe-97e2-ec6cdcefd0c3"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
 				<textFieldExpression><![CDATA[$P{tanggal}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="131" y="191" width="93" height="20" uuid="8ff8da27-4d0a-41a5-8db4-a20824beb479"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{harga_satu}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="131" y="225" width="93" height="20" uuid="c5c58cb6-129d-4937-b834-4327f5ced54f"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{harga_dua}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="130" y="259" width="93" height="20" uuid="b20819ce-0ce6-4fef-aa09-d0c4a8d648ec"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{harga_tiga}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="130" y="293" width="93" height="20" uuid="338643e5-6ef3-4570-90a3-e6faf0dc78d3"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{harga_empat}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="129" y="326" width="93" height="20" uuid="72024f5e-e000-4e41-8302-c5e51e190d35"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{harga_lima}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" x="129" y="359" width="93" height="20" uuid="2f71e807-e763-497c-aa5e-713bd30ac57e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{harga_enam}]]></textFieldExpression>
 			</textField>
 		</band>

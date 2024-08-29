@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
@@ -29,7 +28,6 @@ public class GoldGenerateImagePrice {
 	public void generate(Harga harga) {
 		try {
 			Date date = new Date();	
-			String path = getResourceSavePath(date);		
 			String jasperReport = getResourcePath();
 			
 			Map<String,Object> parameters = new HashMap<>();
@@ -40,31 +38,33 @@ public class GoldGenerateImagePrice {
 			parameters.put("harga_empat", harga.getHargaEmpat());
 			parameters.put("harga_lima", harga.getHargaLima());
 			parameters.put("harga_enam", harga.getHargaEnam());
-
-			System.out.println(">>> "+parameters);
 			
 			JasperReport jr = JasperCompileManager.compileReport(jasperReport);
 			JasperPrint print = JasperFillManager.fillReport(jr, parameters, new JREmptyDataSource());
-						
-			File file = new File(path);  
-			OutputStream ouputStream= null;  
-
-			// export to image
-			ouputStream= new FileOutputStream(file);     
+			  
 	        DefaultJasperReportsContext.getInstance();   
 	        JasperPrintManager printManager = JasperPrintManager.getInstance(DefaultJasperReportsContext.getInstance());      
 	 
 	        BufferedImage rendered_image = null;      
 	        rendered_image = (BufferedImage)printManager.printToImage(print, 0, 1);	
-	        ImageIO.write(rendered_image, "png", ouputStream);  
 
-			TimeUnit.SECONDS.sleep(5);
-
-			System.out.println(generateFilename(date));
-
-			EmailSender.sendEmail(generateFilename(date)+".png");
+			EmailSender.sendEmail2(rendered_image, generateFilename(date)+".png", harga.getTanggal());
 
 		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void exportImage(BufferedImage rendered_image){
+		try {				
+			Date date = new Date();	
+			String path = getResourceSavePath(date);
+
+			File file = new File(path);  
+			OutputStream ouputStream= null;  
+			ouputStream= new FileOutputStream(file);   
+			ImageIO.write(rendered_image, "png", ouputStream);  
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
